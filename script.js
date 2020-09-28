@@ -6,13 +6,22 @@
 // If page is refreshed, the saved events persist
 
 
-
 // use Moment.js to display current date in div
-let currentTime = moment().format('MMMM Do YYYY, h:mm a');
-console.log(currentTime);
+let currentTime = moment().format('dddd, MMMM Do YYYY');
+
 
 function displayTime(){
     document.getElementById("currentDay").innerHTML = currentTime;
 
 };
+setInterval(displayTime, 1000);
+displayTime()
+
+$( "button.saveBtn" ).html( "Save" )
+
+$(document).ready(function () {
+    $('#saveBtn').click(function () {
+        console.log('Save button clicked');
+    });
+});
 
