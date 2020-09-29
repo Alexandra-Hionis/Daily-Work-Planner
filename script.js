@@ -17,11 +17,54 @@ function displayTime(){
 setInterval(displayTime, 1000);
 displayTime()
 
-$( "button.saveBtn" ).html( "Save" )
 
+// Display "save" on buttons
+// $( "button.saveBtn" ).html( "Save" ) need to make it a save image instead?
+
+//
 $(document).ready(function () {
-    $('#saveBtn').click(function () {
-        console.log('Save button clicked');
+    checkHour();
+
+    $('.saveBtn').click(function (event) {
+        let button = event.target;
+        let row = $(button.parentElement);
+        let textarea = row.find("textarea");
+        let text = textarea.value;
+
+        // grab the text in the textarea
+        // grab the hour from the textarea
+        let hour = parseInt(textarea.data("hour"));
+        // save text into local storage under the key: hour
+      
+        localStorage.setItem(hour, text);
     });
 });
 
+
+
+
+// Get the current time and compare time blocks
+
+//Change textarea background color based on time
+var checkHour = function () {
+    //Get Current time
+    let currentHour = parseInt(moment().format("HH")); // "12", "13", "14"
+
+    //get all elements with class "taskarea"
+    var timeBlockElements = $("textarea");
+
+    //loop through taskarea classes
+    for (var i = 0 ; i < timeBlockElements.length ; i++) {
+        let textarea = $(timeBlockElements[i]);
+        let hour = parseInt(textarea.data("hour")); // "9"
+
+        // compare hour with currentHour
+        if (hour < currentHour) {
+            textarea.addClass("past");
+        } else if (hour == currentHour) {
+            textarea.addClass("present");
+        } else {
+            textarea.addClass("future");
+        }
+    }
+}
