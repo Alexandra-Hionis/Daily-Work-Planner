@@ -11,12 +11,7 @@ let currentTime = moment().format('dddd, MMMM Do YYYY');
 
 
 
-function displayTime() {
-    $("currentDay").innerHTML = currentTime;
 
-}
-setInterval(displayTime, 1000);
-displayTime();
 
 
 
@@ -25,13 +20,13 @@ $(document).ready(function () {
     checkHour();
 
     // loop through 9am to 5pm 
-        // for each hour pull from local storage
-        // display text in matching textarea
+    // for each hour pull from local storage
+    // display text in matching textarea
     // end
 
     // loop through local storage
-        // for each key/value
-        // display in matching textarea
+    // for each key/value
+    // display in matching textarea
     // end
 
     for (let index = 0; index < localStorage.length; index++) {
@@ -104,3 +99,9 @@ var checkHour = function () {
 
 
 
+function displayTime() {
+    $("currentDay").innerHTML = currentTime;
+
+}
+setInterval(displayTime, 1000);
+displayTime();
