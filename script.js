@@ -10,7 +10,8 @@
 let currentTime = moment().format('dddd, MMMM Do YYYY');
 
 
-function displayTime(){
+
+function displayTime() {
     $("currentDay").innerHTML = currentTime;
 
 }
@@ -23,19 +24,53 @@ displayTime();
 $(document).ready(function () {
     checkHour();
 
-    $('.saveBtn').click(function (event) {
-        let button = event.target;
-        let row = $(button.parentElement);
-        let textarea = row.find("textarea");
-        let text = textarea.value;
+    // loop through 9am to 5pm 
+        // for each hour pull from local storage
+        // display text in matching textarea
+    // end
 
-        // grab the text in the textarea
-        // grab the hour from the textarea
-        let hour = parseInt(textarea.data("hour"));
-        // save text into local storage under the key: hour
-      
+    // loop through local storage
+        // for each key/value
+        // display in matching textarea
+    // end
+
+    for (let index = 0; index < localStorage.length; index++) {
+        let key = localStorage.key(index); // "10", "17", "9"
+        let value = localStorage.getItem(key); // "Eat breakfast again"
+        let textarea = $(`textarea[data-hour=${key}]`);
+        textarea.val(value);
+    }
+
+    $(".saveBtn").click(function () {
+        var button = $(this);
+        var row = button.parent();
+        var textEntry = row.find(".textEntry");
+        var hour = textEntry.data("hour");
+        var text = textEntry.val();
         localStorage.setItem(hour, text);
+        console.log(hour, text);
     });
+
+
+    // window.location.reload()
+
+
+
+    // $('.saveBtn').click(function (event) {
+    //     let button = event.target;
+    //     let row = $(button.parentElement); 
+    //     let textarea = row.find("textarea");
+    //     let text = textarea.value;
+
+    //     // grab the text in the textarea
+    //     // grab the hour from the textarea
+    //     let hour = parseInt(textarea.data("hour"));
+    //     // save text into local storage under the key: hour
+
+    //     localStorage.setItem(hour, text);
+    //     console.log(localStorage);
+
+    // });
 });
 
 
@@ -52,7 +87,7 @@ var checkHour = function () {
     var timeBlockElements = $("textarea");
 
     //loop through textarea classes
-    for (var i = 0 ; i < timeBlockElements.length ; i++) {
+    for (var i = 0; i < timeBlockElements.length; i++) {
         let textarea = $(timeBlockElements[i]);
         let hour = parseInt(textarea.data("hour")); // "9"
 
@@ -67,5 +102,5 @@ var checkHour = function () {
     }
 };
 
-// When I click into a time block I can enter an event
+
 
