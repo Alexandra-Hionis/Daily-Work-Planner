@@ -11,8 +11,12 @@ let currentTime = moment().format('dddd, MMMM Do YYYY');
 
 
 
+function displayTime() {
+    $("#currentDay").text(currentTime);
 
-
+}
+setInterval(displayTime, 1000);
+displayTime();
 
 
 //
@@ -99,9 +103,3 @@ var checkHour = function () {
 
 
 
-function displayTime() {
-    $("currentDay").innerHTML = currentTime;
-
-}
-setInterval(displayTime, 1000);
-displayTime();
