@@ -11,7 +11,7 @@ let currentTime = moment().format('dddd, MMMM Do YYYY');
 
 
 function displayTime(){
-    document.getElementById("currentDay").innerHTML = currentTime;
+    $("currentDay").innerHTML = currentTime;
 
 };
 setInterval(displayTime, 1000);
@@ -68,3 +68,11 @@ var checkHour = function () {
         }
     }
 }
+
+// When I click into a time block I can enter an event
+// $("textEntry").addEventListener("click", function () {
+//     var textEntry = textEntry.value
+//     localStorage.setItem(textEntry);
+
+
+// }
