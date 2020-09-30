@@ -13,13 +13,11 @@ let currentTime = moment().format('dddd, MMMM Do YYYY');
 function displayTime(){
     $("currentDay").innerHTML = currentTime;
 
-};
+}
 setInterval(displayTime, 1000);
-displayTime()
+displayTime();
 
 
-// Display "save" on buttons
-// $( "button.saveBtn" ).html( "Save" ) need to make it a save image instead?
 
 //
 $(document).ready(function () {
@@ -50,10 +48,10 @@ var checkHour = function () {
     //Get Current time
     let currentHour = parseInt(moment().format("HH")); // "12", "13", "14"
 
-    //get all elements with class "taskarea"
+    //get all elements with class "textarea"
     var timeBlockElements = $("textarea");
 
-    //loop through taskarea classes
+    //loop through textarea classes
     for (var i = 0 ; i < timeBlockElements.length ; i++) {
         let textarea = $(timeBlockElements[i]);
         let hour = parseInt(textarea.data("hour")); // "9"
@@ -67,12 +65,7 @@ var checkHour = function () {
             textarea.addClass("future");
         }
     }
-}
+};
 
 // When I click into a time block I can enter an event
-// $("textEntry").addEventListener("click", function () {
-//     var textEntry = textEntry.value
-//     localStorage.setItem(textEntry);
 
-
-// }
